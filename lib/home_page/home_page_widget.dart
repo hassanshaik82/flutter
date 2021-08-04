@@ -70,6 +70,54 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 ],
               ),
             ),
+          ),
+          Container(
+            width: double.infinity,
+            height: 80,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border.all(
+                color: Color(0xFFE6E6E6),
+              ),
+            ),
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Pour Over - Kilenso',
+                    style: FlutterFlowTheme.bodyText1.override(
+                      fontFamily: 'Poppins',
+                      fontSize: 18,
+                    ),
+                  ),
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(0, 5, 0, 15),
+                        child: Text(
+                          '19.5%',
+                          style: FlutterFlowTheme.subtitle1.override(
+                            fontFamily: 'Montserrat',
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                      Text(
+                        'Espresso',
+                        style: FlutterFlowTheme.bodyText1.override(
+                          fontFamily: 'Poppins',
+                          color: Color(0xFF607D8B),
+                        ),
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
           )
         ],
       ),
