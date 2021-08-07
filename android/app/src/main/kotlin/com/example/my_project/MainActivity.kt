@@ -1,4 +1,4 @@
-package com.flutterflow.tutorial
+package com.flutterflow.univercities
 
 import io.flutter.embedding.android.FlutterActivity
 
