@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "15981297922-njk60vl2rppm6b0d5qv8v90koad7nkkd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.flutterflow.univercities",
+            "certificate_hash": "eb48764506d2097921c349ec64ff962770f2c355"
+          }
+        },
+        {
           "client_id": "15981297922-rfaq8jqpca95rkdketdofbs2b7vn5m5q.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,6 +37,13 @@
             {
               "client_id": "15981297922-rfaq8jqpca95rkdketdofbs2b7vn5m5q.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "15981297922-ice7i9tgleb7dnaki09nm5acut5pcidm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.flutterflow.univercities"
+              }
             }
           ]
         }
