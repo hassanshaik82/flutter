@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "15981297922",
+    "project_id": "univercities-dfcd3",
+    "storage_bucket": "univercities-dfcd3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:15981297922:android:fb90b83a998d992d5f821b",
+        "android_client_info": {
+          "package_name": "com.flutterflow.univercities"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "15981297922-rfaq8jqpca95rkdketdofbs2b7vn5m5q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNWt2ZcUdOWrKTTUL6_QqDoAdkTxr_or0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "15981297922-rfaq8jqpca95rkdketdofbs2b7vn5m5q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

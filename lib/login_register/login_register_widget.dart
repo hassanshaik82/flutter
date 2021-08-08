@@ -1,6 +1,8 @@
+import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../home_page/home_page_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -264,9 +266,26 @@ class _LoginRegisterWidgetState extends State<LoginRegisterWidget> {
                                             padding: EdgeInsets.fromLTRB(
                                                 0, 24, 0, 0),
                                             child: FFButtonWidget(
-                                              onPressed: () {
-                                                print(
-                                                    'Button-Login pressed ...');
+                                              onPressed: () async {
+                                                final user =
+                                                    await signInWithEmail(
+                                                  context,
+                                                  emailAddressController1.text,
+                                                  passwordController1.text,
+                                                );
+                                                if (user == null) {
+                                                  return;
+                                                }
+
+                                                await Navigator
+                                                    .pushAndRemoveUntil(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        HomePageWidget(),
+                                                  ),
+                                                  (r) => false,
+                                                );
                                               },
                                               text: 'Login',
                                               options: FFButtonOptions(
@@ -354,11 +373,79 @@ class _LoginRegisterWidgetState extends State<LoginRegisterWidget> {
                                                 Padding(
                                                   padding: EdgeInsets.fromLTRB(
                                                       0, 0, 8, 0),
+                                                  child: InkWell(
+                                                    onTap: () async {
+                                                      final user =
+                                                          await signInWithFacebook(
+                                                              context);
+                                                      if (user == null) {
+                                                        return;
+                                                      }
+                                                      await Navigator
+                                                          .pushAndRemoveUntil(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              HomePageWidget(),
+                                                        ),
+                                                        (r) => false,
+                                                      );
+                                                    },
+                                                    child: Card(
+                                                      clipBehavior: Clip
+                                                          .antiAliasWithSaveLayer,
+                                                      color: Color(0xFF090F13),
+                                                      elevation: 3,
+                                                      shape:
+                                                          RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(50),
+                                                      ),
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsets.fromLTRB(
+                                                                2, 2, 2, 2),
+                                                        child: Container(
+                                                          width: 50,
+                                                          height: 50,
+                                                          clipBehavior:
+                                                              Clip.antiAlias,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            shape:
+                                                                BoxShape.circle,
+                                                          ),
+                                                          child: Image.asset(
+                                                            'assets/images/social_facebook.svg',
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                InkWell(
+                                                  onTap: () async {
+                                                    final user =
+                                                        await signInWithGoogle(
+                                                            context);
+                                                    if (user == null) {
+                                                      return;
+                                                    }
+                                                    await Navigator
+                                                        .pushAndRemoveUntil(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            HomePageWidget(),
+                                                      ),
+                                                      (r) => false,
+                                                    );
+                                                  },
                                                   child: Card(
                                                     clipBehavior: Clip
                                                         .antiAliasWithSaveLayer,
                                                     color: Color(0xFF090F13),
-                                                    elevation: 3,
                                                     shape:
                                                         RoundedRectangleBorder(
                                                       borderRadius:
@@ -369,46 +456,38 @@ class _LoginRegisterWidgetState extends State<LoginRegisterWidget> {
                                                       padding:
                                                           EdgeInsets.fromLTRB(
                                                               2, 2, 2, 2),
-                                                      child: Container(
-                                                        width: 50,
-                                                        height: 50,
-                                                        clipBehavior:
-                                                            Clip.antiAlias,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          shape:
-                                                              BoxShape.circle,
+                                                      child: InkWell(
+                                                        onTap: () async {
+                                                          final user =
+                                                              await signInWithGoogle(
+                                                                  context);
+                                                          if (user == null) {
+                                                            return;
+                                                          }
+                                                          await Navigator
+                                                              .pushAndRemoveUntil(
+                                                            context,
+                                                            MaterialPageRoute(
+                                                              builder: (context) =>
+                                                                  HomePageWidget(),
+                                                            ),
+                                                            (r) => false,
+                                                          );
+                                                        },
+                                                        child: Container(
+                                                          width: 50,
+                                                          height: 50,
+                                                          clipBehavior:
+                                                              Clip.antiAlias,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            shape:
+                                                                BoxShape.circle,
+                                                          ),
+                                                          child: Image.asset(
+                                                            'assets/images/social_GoogleWhite.svg',
+                                                          ),
                                                         ),
-                                                        child: Image.asset(
-                                                          'assets/images/social_facebook.svg',
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Card(
-                                                  clipBehavior: Clip
-                                                      .antiAliasWithSaveLayer,
-                                                  color: Color(0xFF090F13),
-                                                  shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            50),
-                                                  ),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsets.fromLTRB(
-                                                            2, 2, 2, 2),
-                                                    child: Container(
-                                                      width: 50,
-                                                      height: 50,
-                                                      clipBehavior:
-                                                          Clip.antiAlias,
-                                                      decoration: BoxDecoration(
-                                                        shape: BoxShape.circle,
-                                                      ),
-                                                      child: Image.asset(
-                                                        'assets/images/social_GoogleWhite.svg',
                                                       ),
                                                     ),
                                                   ),
@@ -416,32 +495,71 @@ class _LoginRegisterWidgetState extends State<LoginRegisterWidget> {
                                                 Padding(
                                                   padding: EdgeInsets.fromLTRB(
                                                       8, 0, 0, 0),
-                                                  child: Card(
-                                                    clipBehavior: Clip
-                                                        .antiAliasWithSaveLayer,
-                                                    color: Color(0xFF090F13),
-                                                    shape:
-                                                        RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              50),
-                                                    ),
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsets.fromLTRB(
-                                                              2, 2, 2, 2),
-                                                      child: Container(
-                                                        width: 50,
-                                                        height: 50,
-                                                        clipBehavior:
-                                                            Clip.antiAlias,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          shape:
-                                                              BoxShape.circle,
+                                                  child: InkWell(
+                                                    onTap: () async {
+                                                      final user =
+                                                          await signInWithApple(
+                                                              context);
+                                                      if (user == null) {
+                                                        return;
+                                                      }
+                                                      await Navigator
+                                                          .pushAndRemoveUntil(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              HomePageWidget(),
                                                         ),
-                                                        child: Image.asset(
-                                                          'assets/images/social_Apple.svg',
+                                                        (r) => false,
+                                                      );
+                                                    },
+                                                    child: Card(
+                                                      clipBehavior: Clip
+                                                          .antiAliasWithSaveLayer,
+                                                      color: Color(0xFF090F13),
+                                                      shape:
+                                                          RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(50),
+                                                      ),
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsets.fromLTRB(
+                                                                2, 2, 2, 2),
+                                                        child: InkWell(
+                                                          onTap: () async {
+                                                            final user =
+                                                                await signInWithApple(
+                                                                    context);
+                                                            if (user == null) {
+                                                              return;
+                                                            }
+                                                            await Navigator
+                                                                .pushAndRemoveUntil(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                builder:
+                                                                    (context) =>
+                                                                        HomePageWidget(),
+                                                              ),
+                                                              (r) => false,
+                                                            );
+                                                          },
+                                                          child: Container(
+                                                            width: 50,
+                                                            height: 50,
+                                                            clipBehavior:
+                                                                Clip.antiAlias,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              shape: BoxShape
+                                                                  .circle,
+                                                            ),
+                                                            child: Image.asset(
+                                                              'assets/images/social_Apple.svg',
+                                                            ),
+                                                          ),
                                                         ),
                                                       ),
                                                     ),
@@ -727,8 +845,26 @@ class _LoginRegisterWidgetState extends State<LoginRegisterWidget> {
                                             padding: EdgeInsets.fromLTRB(
                                                 0, 24, 0, 0),
                                             child: FFButtonWidget(
-                                              onPressed: () {
-                                                print('Button pressed ...');
+                                              onPressed: () async {
+                                                final user =
+                                                    await signInWithEmail(
+                                                  context,
+                                                  emailAddressController2.text,
+                                                  passwordController2.text,
+                                                );
+                                                if (user == null) {
+                                                  return;
+                                                }
+
+                                                await Navigator
+                                                    .pushAndRemoveUntil(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        HomePageWidget(),
+                                                  ),
+                                                  (r) => false,
+                                                );
                                               },
                                               text: 'Create Account',
                                               options: FFButtonOptions(
@@ -793,11 +929,79 @@ class _LoginRegisterWidgetState extends State<LoginRegisterWidget> {
                                                 Padding(
                                                   padding: EdgeInsets.fromLTRB(
                                                       0, 0, 8, 0),
+                                                  child: InkWell(
+                                                    onTap: () async {
+                                                      final user =
+                                                          await signInWithFacebook(
+                                                              context);
+                                                      if (user == null) {
+                                                        return;
+                                                      }
+                                                      await Navigator
+                                                          .pushAndRemoveUntil(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              HomePageWidget(),
+                                                        ),
+                                                        (r) => false,
+                                                      );
+                                                    },
+                                                    child: Card(
+                                                      clipBehavior: Clip
+                                                          .antiAliasWithSaveLayer,
+                                                      color: Color(0xFF090F13),
+                                                      elevation: 3,
+                                                      shape:
+                                                          RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(50),
+                                                      ),
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsets.fromLTRB(
+                                                                2, 2, 2, 2),
+                                                        child: Container(
+                                                          width: 50,
+                                                          height: 50,
+                                                          clipBehavior:
+                                                              Clip.antiAlias,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            shape:
+                                                                BoxShape.circle,
+                                                          ),
+                                                          child: Image.asset(
+                                                            'assets/images/social_facebook.svg',
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                InkWell(
+                                                  onTap: () async {
+                                                    final user =
+                                                        await signInWithGoogle(
+                                                            context);
+                                                    if (user == null) {
+                                                      return;
+                                                    }
+                                                    await Navigator
+                                                        .pushAndRemoveUntil(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            HomePageWidget(),
+                                                      ),
+                                                      (r) => false,
+                                                    );
+                                                  },
                                                   child: Card(
                                                     clipBehavior: Clip
                                                         .antiAliasWithSaveLayer,
                                                     color: Color(0xFF090F13),
-                                                    elevation: 3,
                                                     shape:
                                                         RoundedRectangleBorder(
                                                       borderRadius:
@@ -808,46 +1012,38 @@ class _LoginRegisterWidgetState extends State<LoginRegisterWidget> {
                                                       padding:
                                                           EdgeInsets.fromLTRB(
                                                               2, 2, 2, 2),
-                                                      child: Container(
-                                                        width: 50,
-                                                        height: 50,
-                                                        clipBehavior:
-                                                            Clip.antiAlias,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          shape:
-                                                              BoxShape.circle,
+                                                      child: InkWell(
+                                                        onTap: () async {
+                                                          final user =
+                                                              await signInWithGoogle(
+                                                                  context);
+                                                          if (user == null) {
+                                                            return;
+                                                          }
+                                                          await Navigator
+                                                              .pushAndRemoveUntil(
+                                                            context,
+                                                            MaterialPageRoute(
+                                                              builder: (context) =>
+                                                                  HomePageWidget(),
+                                                            ),
+                                                            (r) => false,
+                                                          );
+                                                        },
+                                                        child: Container(
+                                                          width: 50,
+                                                          height: 50,
+                                                          clipBehavior:
+                                                              Clip.antiAlias,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            shape:
+                                                                BoxShape.circle,
+                                                          ),
+                                                          child: Image.asset(
+                                                            'assets/images/social_GoogleWhite.svg',
+                                                          ),
                                                         ),
-                                                        child: Image.asset(
-                                                          'assets/images/social_facebook.svg',
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Card(
-                                                  clipBehavior: Clip
-                                                      .antiAliasWithSaveLayer,
-                                                  color: Color(0xFF090F13),
-                                                  shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            50),
-                                                  ),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsets.fromLTRB(
-                                                            2, 2, 2, 2),
-                                                    child: Container(
-                                                      width: 50,
-                                                      height: 50,
-                                                      clipBehavior:
-                                                          Clip.antiAlias,
-                                                      decoration: BoxDecoration(
-                                                        shape: BoxShape.circle,
-                                                      ),
-                                                      child: Image.asset(
-                                                        'assets/images/social_GoogleWhite.svg',
                                                       ),
                                                     ),
                                                   ),
@@ -855,32 +1051,71 @@ class _LoginRegisterWidgetState extends State<LoginRegisterWidget> {
                                                 Padding(
                                                   padding: EdgeInsets.fromLTRB(
                                                       8, 0, 0, 0),
-                                                  child: Card(
-                                                    clipBehavior: Clip
-                                                        .antiAliasWithSaveLayer,
-                                                    color: Color(0xFF090F13),
-                                                    shape:
-                                                        RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              50),
-                                                    ),
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsets.fromLTRB(
-                                                              2, 2, 2, 2),
-                                                      child: Container(
-                                                        width: 50,
-                                                        height: 50,
-                                                        clipBehavior:
-                                                            Clip.antiAlias,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          shape:
-                                                              BoxShape.circle,
+                                                  child: InkWell(
+                                                    onTap: () async {
+                                                      final user =
+                                                          await signInWithApple(
+                                                              context);
+                                                      if (user == null) {
+                                                        return;
+                                                      }
+                                                      await Navigator
+                                                          .pushAndRemoveUntil(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              HomePageWidget(),
                                                         ),
-                                                        child: Image.asset(
-                                                          'assets/images/social_Apple.svg',
+                                                        (r) => false,
+                                                      );
+                                                    },
+                                                    child: Card(
+                                                      clipBehavior: Clip
+                                                          .antiAliasWithSaveLayer,
+                                                      color: Color(0xFF090F13),
+                                                      shape:
+                                                          RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(50),
+                                                      ),
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsets.fromLTRB(
+                                                                2, 2, 2, 2),
+                                                        child: InkWell(
+                                                          onTap: () async {
+                                                            final user =
+                                                                await signInWithApple(
+                                                                    context);
+                                                            if (user == null) {
+                                                              return;
+                                                            }
+                                                            await Navigator
+                                                                .pushAndRemoveUntil(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                builder:
+                                                                    (context) =>
+                                                                        HomePageWidget(),
+                                                              ),
+                                                              (r) => false,
+                                                            );
+                                                          },
+                                                          child: Container(
+                                                            width: 50,
+                                                            height: 50,
+                                                            clipBehavior:
+                                                                Clip.antiAlias,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              shape: BoxShape
+                                                                  .circle,
+                                                            ),
+                                                            child: Image.asset(
+                                                              'assets/images/social_Apple.svg',
+                                                            ),
+                                                          ),
                                                         ),
                                                       ),
                                                     ),
