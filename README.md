@@ -1,2 +1,2 @@
-# flutterflow
-This is a flutter flow app
+# flutter
+This is a flutter app
